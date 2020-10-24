@@ -3,6 +3,8 @@ int myX;
 int myY;
 int myColor;
 
+Circle [] circ = new Circle[8];
+
  void setup()   
  {     
    size(500,500);
@@ -11,21 +13,27 @@ int myColor;
    {
     bact[i] = new Bacteria(); 
    }
+   for(int i = 0; i < circ.length; i++)
+   {
+    circ[i] = new Circle(); 
+   }
  }   
  
  
  void draw()   
  {    
    background(150);
+   //fill(142,72,42);
+   //ellipse(200,300,20,20);
    for(int i = 0; i < bact.length; i++)
    {
     bact[i].show();//move and show the bacteria   
     bact[i].move();
    }
-   //if (mouseX > myX)
-   //  myX = myX + (int)(Math.random()*5)-1;
-   //else
-   //  myX = myX + (int)(Math.random()*5)-3;
+   for(int i = 0; i < circ.length; i++)
+   {
+    circ[i].show(); 
+   }
  }  
  
  
@@ -39,7 +47,7 @@ int myColor;
   }
   void show()
   {
-    fill(myColor,70);
+    fill(myColor);
     ellipse(myX, myY, 50, 50);
   }
   void move()
@@ -56,3 +64,23 @@ int myColor;
      myY = myY + (int)(Math.random()*5)-3;
   }
  }    
+ 
+ 
+ class Circle
+ {
+   int cX;
+   int cY;
+   int cColor;
+   Circle()
+   {
+     cX = (int)(Math.random()*450)+40;
+     cY = (int)(Math.random()*450)+40;
+     cColor = color(104,26,26);
+   }
+   void show()
+   {
+     fill(cColor);
+     ellipse(cX,cY,20,20);
+   }
+ } // end class Circle
+ 
