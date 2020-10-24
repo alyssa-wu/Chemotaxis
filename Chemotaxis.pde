@@ -1,30 +1,40 @@
-Bacteria bact = new Bacteria(); //declare bacteria variables here   
+Bacteria [] bact = new Bacteria[1]; //declare bacteria variables here
+int myX;
+int myY;
+int myColor;
+
  void setup()   
  {     
    size(500,500);
-   background(150);//initialize bacteria variables here   
+   background(150);//initialize bacteria variables here
+   for(int i = 0; i < bact.length; i++)
+   {
+    bact[i] = new Bacteria(); 
+   }
  }   
  
  
  void draw()   
  {    
    background(150);
-   bact.show();//move and show the bacteria   
-   bact.move();
+   for(int i = 0; i < bact.length; i++)
+   {
+    bact[i].show();//move and show the bacteria   
+    bact[i].move();
+   }
+   //if (mouseX > myX)
+   //  myX = myX + (int)(Math.random()*5)-1;
+   //else
+   //  myX = myX + (int)(Math.random()*5)-3;
  }  
  
  
  class Bacteria    
  {     
-  int myX;
-  int myY;
-  int myColor;
   Bacteria()
   {
-     //myX = (int)(Math.random()*500);
-     //myY = (int)(Math.random()*50)+350;
-     myX = mouseX;
-     myY = mouseY;
+     myX = (int)(Math.random()*450)+40;
+     myY = (int)(Math.random()*450)+40;
      myColor = color((int)(Math.random()*500), (int)(Math.random()*500), (int)(Math.random()*500));
   }
   void show()
@@ -34,7 +44,15 @@ Bacteria bact = new Bacteria(); //declare bacteria variables here
   }
   void move()
   {
-    myX = mouseX + (int)(Math.random()*5)-2;
-    myY = mouseY + (int)(Math.random()*5)-2;
+    //myX = myX + (int)(Math.random()*5)-2;
+    if (mouseX > myX)
+     myX = myX + (int)(Math.random()*5)-1;
+   else
+     myX = myX + (int)(Math.random()*5)-3;
+    //myY = myY + (int)(Math.random()*5)-2;
+    if (mouseY > myY)
+     myY = myY + (int)(Math.random()*5)-1;
+   else
+     myY = myY + (int)(Math.random()*5)-3;
   }
  }    
